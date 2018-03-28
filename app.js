@@ -5,7 +5,14 @@ const mongoose = require ('mongoose')
 const cors = require ('cors')
 const logger = require('morgan')
 
-mongoose.connect(`mongodb://127.0.0.1/todo`)
+var app = express();
+app.use(cors())
+const url = "mongodb://srohimah:12345@ds117469.mlab.com:17469/todo"
+mongoose.connect(url, err=>{
+  if(!err){
+    console.log('connected to database')
+  }
+})
 
 const app = express()
 app.use(logger('dev'))
